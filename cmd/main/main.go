@@ -1,11 +1,13 @@
 package main
 
 import (
+	"fmt"
+	"go/bookstore/pkg/routes"
 	"log"
 	"net/http"
+
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"go/bookstore/pkg/routes"
 )
 
 func main(){
@@ -13,5 +15,6 @@ func main(){
 
 	routes.RegisterBookStoreRoutes(r)
 	http.Handle("/", r)
+	fmt.Println("Server is up and running on 8000")
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
