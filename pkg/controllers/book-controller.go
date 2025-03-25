@@ -48,8 +48,8 @@ func DeleteBook(w http.ResponseWriter, r *http.Request){
 	vars := mux.Vars(r)
 	bookId := vars["bookId"]
 	ID, err := strconv.ParseInt(bookId, 0, 0)
-	if err != nil{
-		fmt.Printf("error while Parsing")
+	if err != nil {
+		fmt.Println("error while parsing")
 	}
 	book := models.DeleteBook(ID)
 	res, _ := json.Marshal(book);

@@ -9,7 +9,7 @@ var db *gorm.DB
 
 type Book struct{
 	gorm.Model
-	Name string `gorm:""json:"name"`
+	Name string `gorm:"" json:"name"`
 	Author string `json:"author"`
 	Publication string `json:"publication"`
 }
@@ -21,8 +21,8 @@ func init(){
 }
 
 func (b *Book) CreateBook() *Book{
-	db.NewRecord(b)
-	db.Create(&db)
+	db.NewRecord(b)// This will first check if the record exists, if it does it will give an error
+	db.Create(&b) // This will insert a new record into the database
 	return b
 }
 
